@@ -1,11 +1,19 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import {useSelector} from 'react-redux';
 
 function Header() {
+  const counter = useSelector(state => state.counter);
+  const isLogged = useSelector(state => state.isLogged);
+
   return (
     <header style={headerStyle}>
       <h1>TodoList</h1>
       <Link style={linkStyle} to="/">Home</Link> | <Link style={linkStyle} to="/about">About</Link>
+      
+      {/* REDUX SPECIFIC VARS */}
+      <h4>Items Counted: {counter}</h4>
+      {isLogged ? <h3>Logged in as tester</h3> : ""}
     </header>
   )
 }

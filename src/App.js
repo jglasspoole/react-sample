@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from './components/layout/Header';
 import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
+import TodoManager from './components/TodoManager';
 import About from './components/pages/About';
 //import uuid from 'uuid';
 import axios from 'axios';
@@ -68,6 +69,7 @@ class App extends React.Component {
                 <Todos todos={this.state.todos} 
                   markComplete={this.markComplete}
                   delTodo={this.delTodo} />
+                <TodoManager></TodoManager>
               </React.Fragment>
             )} />
             <Route path="/about" component={About} />
