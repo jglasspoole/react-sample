@@ -9,12 +9,13 @@ body {
   line-height: 1.4;
 }
 
+
 a {
   color: #333;
   text-decoration: none;
 }
 
-.container {
+.app-container {
   padding: 0 1rem;
 }
 

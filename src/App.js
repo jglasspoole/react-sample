@@ -5,6 +5,7 @@ import Todos from './components/Todos';
 import AddTodo from './components/AddTodo';
 import TodoManager from './components/TodoManager';
 import About from './components/pages/About';
+import Chat from './components/Chat';
 //import uuid from 'uuid';
 import axios from 'axios';
 
@@ -61,7 +62,7 @@ class App extends React.Component {
     return (
       <Router>
         <div className="App">
-          <div className="container">
+          <div className="app-container">
             <Header />
             <Route exact path="/" render={props => (
               <React.Fragment>
@@ -73,7 +74,7 @@ class App extends React.Component {
               </React.Fragment>
             )} />
             <Route path="/about" component={About} />
-            
+            <Route path="/chat" component={Chat} />
           </div>
         </div>
       </Router>
