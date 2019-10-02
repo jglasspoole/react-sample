@@ -41,12 +41,14 @@ export class ChatContainer extends Component {
     const { chats } = this.state
 
     const newChats = reset ? [chat] : [...chats, chat]
-    this.setState({chats: newChats})
 
-    const messageEvent = `${MESSAGE_RECEIVED}-${chat.id}`
+    this.setState({chats: newChats, activeChat : reset ? chat : this.state.activeChat})
+
+    //Set listeners or receiving messages and typing notifications
     const typingEvent = `${TYPING}-${chat.id}`
+    const messageEvent = `${MESSAGE_RECEIVED}-${chat.id}`
 
-    socket.on(typingEvent)
+    socket.on(typingEvent, this.updateTypingInChat(chat.id))
     socket.on(messageEvent, this.addMessageToChat(chat.id))
   }
 
@@ -57,7 +59,7 @@ export class ChatContainer extends Component {
   * @param chatId {number}
   */
   addMessageToChat = (chatId) => {
-    return message => {
+    return (message) => {
       const { chats }= this.state
       let newChats = chats.map((chat) => {
         if(chat.id === chatId)
@@ -75,7 +77,23 @@ export class ChatContainer extends Component {
   * @param chatId {number}
   */
   updateTypingInChat = (chatId) => {
-
+    return ({user, isTyping}) => {
+      if(user !== this.props.user.name) {
+        const { chats } = this.state
+        let newChats = chats.map((chat) => {
+          if(chat.id === chatId) {
+            if(isTyping && !chat.typingUsers.includes(user)) {
+              chat.typingUsers.push(user)
+            }
+            else if(!isTyping && chat.typingUsers.includes(user)) {
+              chat.typingUsers = chat.typingUsers.filter(u => u !== user)
+            }
+          }
+          return chat
+        })
+        this.setState({chats : newChats})
+      }
+    }
   }
 
   /*
@@ -85,7 +103,7 @@ export class ChatContainer extends Component {
   * @param message {string} The message to be added to the chat.
   */
   sendMessage = (chatId, message) => {
-    const {socket } = this.props
+    const { socket } = this.props
     socket.emit(MESSAGE_SENT, {chatId, message})
   }
 

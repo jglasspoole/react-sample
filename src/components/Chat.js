@@ -5,7 +5,7 @@ import '../chat.css'
 export class Chat extends Component {
   render() {
     return (
-      <ChatLayout title="Chat App" />
+      <ChatLayout />
     )
   }
 }

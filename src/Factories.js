@@ -64,7 +64,7 @@ const createChat = ({messages = [], name = "Community", users = []} = {}) => (
 * @return a string represented in 24hr time i.e. '11:30', '19:30'
 */
 const getTime = (date) => {
-  return `${date.getHours()}:${("0" + date.getMinutes().slice(-2))}`
+  return `${date.getHours()}:${("0" + date.getMinutes()).slice(-2)}`
 }
 
 module.exports = {
