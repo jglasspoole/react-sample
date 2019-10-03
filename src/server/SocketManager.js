@@ -1,4 +1,4 @@
-const io = require('./index.js').io
+const io = require('./chat_server.js').io
 
 const { COMMUNITY_CHAT, VERIFY_USER, USER_CONNECTED, USER_DISCONNECTED, 
       LOGOUT, MESSAGE_RECEIVED, MESSAGE_SENT, TYPING } = require('../Events')

@@ -1,0 +1,23 @@
+###
+# Display user list
+GET http://localhost:3001/users
+
+###
+# Create a new user
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+  "name" : "Kyle",
+  "password" : "passwd"
+}
+
+###
+# Login attempt
+POST http://localhost:3001/users/login
+Content-Type: application/json
+
+{
+  "name" : "Kyle",
+  "password" : "passwd"
+}
