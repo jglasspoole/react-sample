@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { VERIFY_USER } from '../Events'
 
-export class LoginForm extends Component {
+export class ChatLoginForm extends Component {
   constructor(props) {
     super(props);
 
@@ -61,4 +61,4 @@ export class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default ChatLoginForm

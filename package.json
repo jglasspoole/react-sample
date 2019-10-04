@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
+    "ejs": "^2.7.1",
     "express": "^4.17.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
@@ -21,6 +22,7 @@
     "react": "react-scripts start",
     "authserver": "nodemon src/server/AuthServer.js",
     "chatserver": "nodemon src/server/ChatServer.js",
+    "privserver": "nodemon src/server/PrivServer.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -42,6 +44,7 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
+    "dotenv": "^8.1.0",
     "nodemon": "^1.19.3"
   }
 }
